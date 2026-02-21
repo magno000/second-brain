@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllDocuments, getDocumentStats, updateDocumentStatus, DocumentStatus } from '@/lib/documents';
+import { getAllDocuments, getDocumentStats, updateDocumentStatus, createDocument, DocumentStatus } from '@/lib/documents';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,6 +11,33 @@ export async function GET() {
     } catch (error) {
         console.error('Error reading documents:', error);
         return NextResponse.json({ error: 'Failed to read documents' }, { status: 500 });
+    }
+}
+
+// ✅ NUEVO: Endpoint POST para crear documentos
+export async function POST(request: NextRequest) {
+    try {
+        const body = await request.json();
+        const { title, description, category, tags, status, date, content } = body;
+
+        if (!title) {
+            return NextResponse.json({ error: 'title is required' }, { status: 400 });
+        }
+
+        const newDoc = createDocument({
+            title,
+            description,
+            category,
+            tags,
+            status,
+            date,
+            content
+        });
+
+        return NextResponse.json({ success: true, document: newDoc });
+    } catch (error) {
+        console.error('Error creating document:', error);
+        return NextResponse.json({ error: 'Failed to create document' }, { status: 500 });
     }
 }
 
