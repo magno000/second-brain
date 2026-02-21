@@ -18,8 +18,8 @@ interface Category {
 }
 
 interface SidebarProps {
-    activeView: 'kanban' | 'documents' | 'settings' | 'api-keys';
-    onViewChange: (view: 'kanban' | 'documents' | 'settings' | 'api-keys') => void;
+    activeView: 'kanban' | 'documents' | 'settings' | 'api-keys' | 'modelos';
+    onViewChange: (view: 'kanban' | 'documents' | 'settings' | 'api-keys' | 'modelos') => void;
     categories: Category[];
     selectedCategory: string | null;
     onCategorySelect: (cat: string | null) => void;
@@ -57,8 +57,8 @@ export default function Sidebar({
 }: ExtendedSidebarProps) {
     function handleNavClick(id: NavId) {
         onNavChange(id);
-        if (id === 'kanban' || id === 'documents' || id === 'settings' || id === 'api-keys') {
-            onViewChange(id as 'kanban' | 'documents' | 'settings' | 'api-keys');
+        if (id === 'kanban' || id === 'documents' || id === 'settings' || id === 'api-keys' || id === 'modelos') {
+            onViewChange(id as 'kanban' | 'documents' | 'settings' | 'api-keys' | 'modelos');
         }
         onClose();
     }

@@ -7,6 +7,7 @@ import KanbanBoard from './components/KanbanBoard';
 import Sidebar, { Category, NavId } from './components/Sidebar';
 import ConfiguracionView from './components/ConfiguracionView';
 import ApiKeysView from './components/ApiKeysView';
+import ModelCouncilView from './components/ModelCouncilView';
 
 interface DocsResponse {
   documents: DocumentMeta[];
@@ -21,7 +22,7 @@ export default function Home() {
   const [loadingDoc, setLoadingDoc] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeNav, setActiveNav] = useState<NavId>('kanban');
-  const [activeView, setActiveView] = useState<'kanban' | 'documents' | 'settings' | 'api-keys'>('kanban');
+  const [activeView, setActiveView] = useState<'kanban' | 'documents' | 'settings' | 'api-keys' | 'modelos'>('kanban');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -75,7 +76,7 @@ export default function Home() {
     );
   }, []);
 
-  const handleViewChange = useCallback((view: 'kanban' | 'documents' | 'settings' | 'api-keys') => {
+  const handleViewChange = useCallback((view: 'kanban' | 'documents' | 'settings' | 'api-keys' | 'modelos') => {
     setActiveView(view);
     if (view === 'kanban') {
       setSelectedDoc(null);
@@ -180,6 +181,10 @@ export default function Home() {
               if (id === 'settings') handleViewChange('settings');
             }}
           />
+        )}
+
+        {activeView === 'modelos' && (
+          <ModelCouncilView />
         )}
       </main>
     </div>
