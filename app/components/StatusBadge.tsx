@@ -7,7 +7,7 @@ interface StatusBadgeProps {
     size?: 'sm' | 'md';
 }
 
-// 🔹 Se agregó 'todo' a labels
+// 🔹 Todos los estados declarados
 const labels: Record<DocumentStatus, string> = {
     todo: 'Por hacer',
     pending: 'Pendiente',
@@ -15,7 +15,6 @@ const labels: Record<DocumentStatus, string> = {
     completed: 'Completado',
 };
 
-// 🔹 Se agregó 'todo' a classMap
 const classMap: Record<DocumentStatus, string> = {
     todo: 'badge badge-todo',
     pending: 'badge badge-pending',
