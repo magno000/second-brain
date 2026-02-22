@@ -14,7 +14,7 @@ export async function GET() {
     }
 }
 
-// ✅ NUEVO: Endpoint POST para crear documentos
+// ✅ NUEVO: Endpoint POST para crear documentos vía GitHub API
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'title is required' }, { status: 400 });
         }
 
-        const newDoc = createDocument({
+        const newDoc = await createDocument({
             title,
             description,
             category,
@@ -34,11 +34,16 @@ export async function POST(request: NextRequest) {
             content
         });
 
+        if (!newDoc) {
+            return NextResponse.json({ error: 'Failed to create document via GitHub API' }, { status: 500 });
+        }
+
         return NextResponse.json({ success: true, document: newDoc });
     } catch (error) {
         console.error('Error creating document:', error);
         return NextResponse.json({ error: 'Failed to create document' }, { status: 500 });
     }
+
 }
 
 export async function PATCH(request: NextRequest) {
