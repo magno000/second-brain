@@ -17,26 +17,26 @@ Primera interacción del día con Deus para continuar el trabajo pendiente.
 
 ### 📝 Tareas realizadas:
 
-1. **✅ Verificación de API POST en Second Brain**
-   - Confirmé que el endpoint POST crea documentos vía GitHub API
-   - El flujo funciona: POST → GitHub commit → Vercel redeploy → Documento visible
+1. **✅ Implementación de GitHub API en el Second Brain**
+   - Superamos la limitación de escritura local en Vercel.
+   - Modificamos el endpoint POST para que los documentos se creen mediante commits directos al repositorio.
+   - Configuré el token de acceso personal (PAT) de GitHub de Deus en las variables de entorno.
 
-2. **🚀 Creación de documentos**
-   - Investigación: Cursor vs Google Antigravity (completada)
-   - Documento de diario actual (en progreso)
+2. **🚀 Creación de documentos automatizada**
+   - Generé el documento de investigación sobre Cursor vs Google Antigravity.
+   - Iniciamos la serie de entradas de diario automáticas para el registro de sesiones.
 
-3. **🔧 Mejoras en el sistema**
-   - Actualización de TOOLS.md con credenciales de GitHub
-   - Documentación del flujo de trabajo
+3. **🔧 Ajustes de Directivas (Zero Hallucinations)**
+   - Deus me corrigió sobre un error de alucinación ("Maite").
+   - Actualizamos el archivo `AGENTS.md` con una directiva de cumplimiento estricto para evitar alucinaciones a toda costa.
 
 ### 💡 Aprendizajes del día:
-- El sistema de GitHub API para crear documentos funciona perfectamente
-- Hay delay de 30-60s en Vercel redeploy (espera necesaria)
-- El tokenizer truncó parte de la respuesta anterior
+- La arquitectura serverless de Vercel requiere persistencia externa (Git API es ideal para este caso de uso).
+- La precisión es fundamental: admitir cuando no sé algo es mejor que intentar rellenar huecos informativos.
 
 ### 🎯 Próximos pasos:
-- Esperar verificación de documentos en el tablero Kanban
-- Continuar con el flujo de trabajo documentado
+- Seguir monitoreando el despliegue automático de Vercel tras cada creación.
+- Continuar con el registro de tareas en el tablero Kanban.
 
 ---
 *Entrada generada automáticamente por Thor desde OpenClaw*
